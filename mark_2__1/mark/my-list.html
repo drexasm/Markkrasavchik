@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineMatch — Мой список</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    document.documentElement.classList.add("is-page-loading");
+  </script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-accent" aria-hidden="true"></div>
+    <div class="header-inner">
+      <div class="header-brand-nav">
+        <a href="index.html" class="logo">CineMatch</a>
+        <nav class="nav-main" aria-label="Основное меню">
+          <a href="index.html">Главная</a>
+          <a href="films.html">Фильмы</a>
+          <a href="series.html">Сериалы</a>
+          <a href="my-list.html" class="is-active">Мой список</a>
+        </nav>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="search-icon-btn" aria-label="Поиск">
+          <img src="https://www.figma.com/api/mcp/asset/cc64b57e-d113-41d7-9f37-ea47a20fd49d" alt="" width="20"
+            height="20" />
+        </button>
+        <button type="button" class="hotkeys-pill" aria-label="Горячие клавиши" title="Справка по клавишам">
+          <kbd>?</kbd>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="mylist-main" aria-labelledby="mylist-title">
+      <div class="mylist-intro__title-row">
+        <div class="mylist-intro__badge" aria-hidden="true">
+          <img src="https://www.figma.com/api/mcp/asset/805795f5-50fb-4483-904e-00acd57f52c6" alt="" width="20"
+            height="20" />
+        </div>
+        <h1 id="mylist-title">Мой список</h1>
+      </div>
+      <p class="mylist-intro__lead">
+        Фильмы и сериалы, сохраненные для последующего просмотра
+      </p>
+      <div class="mylist-empty">
+        <div class="mylist-empty__circle" aria-hidden="true">
+          <img src="https://www.figma.com/api/mcp/asset/b6cf73ec-0e5f-417e-895b-347acef5609e" alt="" width="32"
+            height="32" />
+        </div>
+        <p class="mylist-empty__title">Ваш список пуст</p>
+        <p class="mylist-empty__hint">
+          Добавьте фильмы и сериалы, чтобы посмотреть их позже
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-columns">
+        <div class="footer-brand">
+          <h3>CineMatch</h3>
+          <p>Ваш персональный гид в мире кино</p>
+        </div>
+        <div class="footer-col">
+          <h4>Контент</h4>
+          <ul>
+            <li><a href="films.html">Фильмы</a></li>
+            <li><a href="series.html">Сериалы</a></li>
+            <li><a href="#">Новинки</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Помощь</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Поддержка</a></li>
+            <li><a href="#">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Правовая информация</h4>
+          <ul>
+            <li><a href="#">Условия использования</a></li>
+            <li><a href="#">Конфиденциальность</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026 CineMatch. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="progress-bar.js" defer></script>
+  <script src="page-transitions.js" defer></script>
+  <script src="page-visibility.js" defer></script>
+  <script src="interactions.js" defer></script>
+  <script src="search-modal.js" defer></script>
+  <script src="hotkeys.js" defer></script>
+  <script src="my-list.js" defer></script>
+</body>
+
+</html>

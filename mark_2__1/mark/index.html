@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineMatch — главная</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    document.documentElement.classList.add("is-page-loading");
+  </script>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-accent" aria-hidden="true"></div>
+    <div class="header-inner">
+      <div class="header-brand-nav">
+        <a href="index.html" class="logo">CineMatch</a>
+        <nav class="nav-main" aria-label="Основное меню">
+          <a href="index.html" class="is-active">Главная</a>
+          <a href="films.html">Фильмы</a>
+          <a href="series.html">Сериалы</a>
+          <a href="my-list.html">Мой список</a>
+        </nav>
+      </div>
+      <div class="header-actions">
+        <button type="button" class="search-pill" aria-label="Открыть поиск">
+          <img src="https://www.figma.com/api/mcp/asset/24ebfad5-6501-4769-aeb9-7c5933f7e04a" alt="" width="16"
+            height="16" />
+          <span>Поиск</span>
+          <kbd>⌘K</kbd>
+        </button>
+        <button type="button" class="hotkeys-pill" aria-label="Горячие клавиши" title="Справка по клавишам">
+          <kbd>?</kbd>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-bg">
+        <video class="hero-bg__video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="videos/hero.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="hero-content">
+        <div class="hero-badge">
+          <img src="https://www.figma.com/api/mcp/asset/27990262-0f9f-43c1-bbfa-1ed45692f420" alt="" width="24"
+            height="24" />
+          <span>Персональные рекомендации</span>
+        </div>
+        <h1 id="hero-title">
+          Откройте для себя<br />
+          лучшие фильмы
+        </h1>
+        <p class="lead">
+          CineMatch подбирает контент специально для вас на основе ваших предпочтений
+        </p>
+        <a href="#" class="btn-cta">Начать просмотр</a>
+      </div>
+    </section>
+
+    <section class="section section-scene" aria-labelledby="scene-title">
+      <div class="section-scene__layout">
+        <div class="section-scene__copy">
+          <div class="section-head section-head--compact">
+            <h2 id="scene-title">Кинематограф в 3D</h2>
+          </div>
+          <p class="section-scene__lead">
+            Интерактивная сцена на Three.js — частицы в фирменных цветах CineMatch реагируют на прокрутку
+          </p>
+        </div>
+        <div class="section-scene__canvas-wrap">
+          <canvas id="scene-3d-canvas" aria-hidden="true"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-generate" aria-labelledby="generate-title">
+      <div class="section-head">
+        <img src="https://www.figma.com/api/mcp/asset/27990262-0f9f-43c1-bbfa-1ed45692f420" alt="" width="28"
+          height="28" />
+        <h2 id="generate-title">Подборка для вас</h2>
+      </div>
+      <p class="generate-intro">Нажмите кнопку — сгенерируем персональную подборку из каталога</p>
+      <div class="generate-actions">
+        <button type="button" class="btn-cta" id="btn-generate-recs">Сгенерировать подборку</button>
+        <span class="generate-hint"><kbd>G</kbd> — быстрый запуск</span>
+      </div>
+      <div class="generate-progress" hidden>
+        <div class="generate-progress__track" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+          <div class="generate-progress__fill"></div>
+        </div>
+        <p class="generate-progress__label">Подготовка…</p>
+      </div>
+      <p class="generate-status" hidden aria-live="polite"></p>
+      <div class="card-grid generate-results" hidden aria-label="Сгенерированная подборка"></div>
+    </section>
+
+    <section class="section" aria-labelledby="popular-title">
+      <div class="section-head">
+        <img src="https://www.figma.com/api/mcp/asset/36052f41-a611-4749-87c0-44a519c2a222" alt="" width="28"
+          height="28" />
+        <h2 id="popular-title">Популярное сейчас</h2>
+      </div>
+      <div class="filters" role="tablist" aria-label="Фильтр контента">
+        <button type="button" class="filter-btn is-active" role="tab" aria-selected="true">Все</button>
+        <button type="button" class="filter-btn" role="tab" aria-selected="false">Фильмы</button>
+        <button type="button" class="filter-btn" role="tab" aria-selected="false">Сериалы</button>
+      </div>
+      <div class="card-grid">
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/dacbad42-a470-49d9-8610-0a975ec3ef1a" alt="Постер: Начало"
+              width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Начало</h3>
+            <div class="movie-card__meta"><span>2010</span><span>•</span><span>Sci-Fi</span></div>
+            <div class="movie-card__rating"><span>★</span> 8.8</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/ffa6ef89-aad7-4ca3-b0d1-7123f1ba8393"
+              alt="Постер: Интерстеллар" width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Интерстеллар</h3>
+            <div class="movie-card__meta"><span>2014</span><span>•</span><span>Sci-Fi</span></div>
+            <div class="movie-card__rating"><span>★</span> 8.7</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/8a82f0ad-52b3-40c2-be57-67209dc6e01b"
+              alt="Постер: Тёмный рыцарь" width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Темный рыцарь</h3>
+            <div class="movie-card__meta"><span>2008</span><span>•</span><span>Action</span></div>
+            <div class="movie-card__rating"><span>★</span> 9.0</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/567a2ae7-c611-422d-8e65-d813cbf4db57" alt="Постер: Матрица"
+              width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Матрица</h3>
+            <div class="movie-card__meta"><span>1999</span><span>•</span><span>Sci-Fi</span></div>
+            <div class="movie-card__rating"><span>★</span> 8.7</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/ff7757cd-0bb2-4c5f-bd27-5dfbc0f737f2"
+              alt="Постер: Форрест Гамп" width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Форрест Гамп</h3>
+            <div class="movie-card__meta"><span>1994</span><span>•</span><span>Drama</span></div>
+            <div class="movie-card__rating"><span>★</span> 8.8</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/3c4b6b29-9e73-4876-9f32-7a0c2abc6328"
+              alt="Постер: Побег из Шоушенка" width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Побег из Шоушенка</h3>
+            <div class="movie-card__meta"><span>1994</span><span>•</span><span>Drama</span></div>
+            <div class="movie-card__rating"><span>★</span> 9.3</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/e414e6e1-d928-42b6-b279-32c2a516ff24"
+              alt="Постер: Во все тяжкие" width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Во все тяжкие</h3>
+            <div class="movie-card__meta"><span>2008–2013</span><span>•</span><span>Crime</span></div>
+            <div class="movie-card__rating"><span>★</span> 9.5</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/ff7757cd-0bb2-4c5f-bd27-5dfbc0f737f2"
+              alt="Постер: Игра престолов" width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Игра престолов</h3>
+            <div class="movie-card__meta"><span>2011–2019</span><span>•</span><span>Fantasy</span></div>
+            <div class="movie-card__rating"><span>★</span> 9.2</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/8a82f0ad-52b3-40c2-be57-67209dc6e01b"
+              alt="Постер: Очень странные дела" width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Очень странные дела</h3>
+            <div class="movie-card__meta"><span>2016–</span><span>•</span><span>Sci-Fi</span></div>
+            <div class="movie-card__rating"><span>★</span> 8.7</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/8e79dc88-dda6-482c-9dab-474a6688ceb9"
+              alt="Постер: Чёрное зеркало" width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Черное зеркало</h3>
+            <div class="movie-card__meta"><span>2011–</span><span>•</span><span>Sci-Fi</span></div>
+            <div class="movie-card__rating"><span>★</span> 8.8</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/fe3073d2-f1c6-4541-a39d-a4d3a61c0d0a" alt="Постер: Шерлок"
+              width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Шерлок</h3>
+            <div class="movie-card__meta"><span>2010–2017</span><span>•</span><span>Mystery</span></div>
+            <div class="movie-card__rating"><span>★</span> 9.1</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/81caf958-b75e-4f80-ae69-15c06dc35122" alt="Постер: Корона"
+              width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Корона</h3>
+            <div class="movie-card__meta"><span>2016–2023</span><span>•</span><span>Drama</span></div>
+            <div class="movie-card__rating"><span>★</span> 8.6</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-rating" aria-labelledby="rating-title">
+      <div class="section-head">
+        <img src="https://www.figma.com/api/mcp/asset/e13d9fc7-83eb-4e13-8a5a-8450608dfa2d" alt="" width="28"
+          height="28" />
+        <h2 id="rating-title">Высокий рейтинг</h2>
+      </div>
+      <div class="card-grid">
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/3c4b6b29-9e73-4876-9f32-7a0c2abc6328"
+              alt="Постер: Побег из Шоушенка" width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Побег из Шоушенка</h3>
+            <div class="movie-card__meta"><span>1994</span><span>•</span><span>Drama</span></div>
+            <div class="movie-card__rating"><span>★</span> 9.3</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/8a82f0ad-52b3-40c2-be57-67209dc6e01b"
+              alt="Постер: Тёмный рыцарь" width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Темный рыцарь</h3>
+            <div class="movie-card__meta"><span>2008</span><span>•</span><span>Action</span></div>
+            <div class="movie-card__rating"><span>★</span> 9.0</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/3c4b6b29-9e73-4876-9f32-7a0c2abc6328"
+              alt="Постер: Криминальное чтиво" width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Криминальное чтиво</h3>
+            <div class="movie-card__meta"><span>1994</span><span>•</span><span>Crime</span></div>
+            <div class="movie-card__rating"><span>★</span> 8.9</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/dacbad42-a470-49d9-8610-0a975ec3ef1a" alt="Постер: Начало"
+              width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Начало</h3>
+            <div class="movie-card__meta"><span>2010</span><span>•</span><span>Sci-Fi</span></div>
+            <div class="movie-card__rating"><span>★</span> 8.8</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/ff7757cd-0bb2-4c5f-bd27-5dfbc0f737f2"
+              alt="Постер: Форрест Гамп" width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Форрест Гамп</h3>
+            <div class="movie-card__meta"><span>1994</span><span>•</span><span>Drama</span></div>
+            <div class="movie-card__rating"><span>★</span> 8.8</div>
+          </div>
+        </article>
+        <article class="movie-card">
+          <div class="movie-card__poster">
+            <img src="https://www.figma.com/api/mcp/asset/bfa11ad6-b675-432a-b1b4-c7080c42fa78"
+              alt="Постер: Бойцовский клуб" width="228" height="342" />
+          </div>
+          <div class="movie-card__body">
+            <h3 class="movie-card__title">Бойцовский клуб</h3>
+            <div class="movie-card__meta"><span>1999</span><span>•</span><span>Drama</span></div>
+            <div class="movie-card__rating"><span>★</span> 8.8</div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-columns">
+        <div class="footer-brand">
+          <h3>CineMatch</h3>
+          <p>Ваш персональный гид в мире кино</p>
+        </div>
+        <div class="footer-col">
+          <h4>Контент</h4>
+          <ul>
+            <li><a href="films.html">Фильмы</a></li>
+            <li><a href="series.html">Сериалы</a></li>
+            <li><a href="#">Новинки</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Помощь</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Поддержка</a></li>
+            <li><a href="#">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Правовая информация</h4>
+          <ul>
+            <li><a href="#">Условия использования</a></li>
+            <li><a href="#">Конфиденциальность</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026 CineMatch. Все права защищены.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="progress-bar.js" defer></script>
+  <script src="page-transitions.js" defer></script>
+  <script src="page-visibility.js" defer></script>
+  <script src="interactions.js" defer></script>
+  <script src="search-modal.js" defer></script>
+  <script src="hotkeys.js" defer></script>
+  <script src="my-list.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
+  <script src="scene-3d.js" defer></script>
+  <script src="recommendations-generate.js" defer></script>
+</body>
+
+</html>
